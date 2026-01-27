@@ -1,7 +1,7 @@
 import { getAllChapterIds } from "@/lib/chapters";
 import ChapterPageClient from "./ChapterPageClient";
 
-// 生成所有章节的静态参数（用于静态导出）
+// 生成所有章节的静态参数
 export function generateStaticParams() {
     return getAllChapterIds().map((chapterId) => ({
         chapterId: chapterId,

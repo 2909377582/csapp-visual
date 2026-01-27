@@ -189,3 +189,8 @@ export function getPrevChapter(currentId: string): Chapter | undefined {
   }
   return chapters[currentIndex - 1];
 }
+
+// 获取所有章节ID（用于静态生成）
+export function getAllChapterIds(): string[] {
+  return chapters.map(ch => ch.id);
+}
