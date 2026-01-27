@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* Vercel 自动处理构建，不需要强制 export */
+  output: 'export',
+  trailingSlash: true,
   images: {
     unoptimized: true,
   },
