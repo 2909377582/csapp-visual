@@ -344,6 +344,77 @@ Cache (高速缓存) 的主要目的是提高CPU访问存储器的速度。
 
 Cache容量很小且成本高，不是为了增大容量或降低成本。`,
         difficulty: 1
+    },
+    // ==================== 第2章：信息的表示和处理 ====================
+    {
+        id: "2024-15",
+        year: 2024,
+        questionNumber: 15,
+        subject: "co",
+        knowledgePointId: "ch02-2.4",
+        content: "已知 float 型变量 f 的机器数为 41A4 0000H，则 f 的值为（）",
+        options: [
+            { label: "A", text: "12.5" },
+            { label: "B", text: "20.5" },
+            { label: "C", text: "25" },
+            { label: "D", text: "41.5" }
+        ],
+        answer: "B",
+        explanation: `IEEE 754 浮点数解析：
+1. 机器数 41A4 0000H 展开为二进制：
+   0100 0001 1010 0100 0000 0000 0000 0000
+2. 拆解：
+   • 符号位 s = 0 (正)
+   • 阶码 exp = 1000 0011 (131)
+   • 尾数 frac = 010 0100 0000...
+3. 计算：
+   • 指数 E = 131 - 127 = 4
+   • 尾数 M = 1 + 0.01001 (二进制) = 1 + 1/4 + 1/32 = 1.28125
+   • 结果 V = 1.28125 × 2^4 = 1.28125 × 16 = 20.5
+答案选B。`,
+        difficulty: 3
+    },
+    {
+        id: "2023-13",
+        year: 2023,
+        questionNumber: 13,
+        subject: "co",
+        knowledgePointId: "ch02-2.2",
+        content: "设 x = -103，若采用 8 位定点补码表示，则 [x]补 为（）",
+        options: [
+            { label: "A", text: "10011001" },
+            { label: "B", text: "11100111" },
+            { label: "C", text: "10010111" },
+            { label: "D", text: "11101001" }
+        ],
+        answer: "A",
+        explanation: `负数补码计算：
+1. |x| = 103，二进制原码为 0110 0111
+2. 求反码：1001 1000
+3. 反码加1得补码：1001 1001
+验证：-128 + 16 + 8 + 1 = -103。正确。`,
+        difficulty: 2
+    },
+    {
+        id: "2022-13",
+        year: 2022,
+        questionNumber: 13,
+        subject: "co",
+        knowledgePointId: "ch02-2.1",
+        content: "已知 int 型变量 x=100，y=-60，则 x+y 在机器内部的 8 位补码表示为（）",
+        options: [
+            { label: "A", text: "00101000" },
+            { label: "B", text: "11011000" },
+            { label: "C", text: "01100100" },
+            { label: "D", text: "10111100" }
+        ],
+        answer: "A",
+        explanation: `补码加法计算：
+1. x = 100, [x]补 = 0110 0100
+2. y = -60, [y]补 = 1100 0100
+3. 相加：0110 0100 + 1100 0100 = (1)0010 1000 (舍弃进位)
+结果为 0010 1000，即十进制 40。正确。`,
+        difficulty: 2
     }
 ];
 

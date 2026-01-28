@@ -29,6 +29,9 @@ import HardwareOverview from "@/components/visualizations/hardware/HardwareOverv
 import MemoryHierarchy from "@/components/visualizations/memory/MemoryHierarchy";
 import HelloProgramFlow from "@/components/visualizations/hello/HelloProgramFlow";
 import OSAbstraction from "@/components/visualizations/os/OSAbstraction";
+import EndiannessExplorer from "@/components/visualizations/chapter2/EndiannessExplorer";
+import IntegerArithmetic from "@/components/visualizations/chapter2/IntegerArithmetic";
+import FloatingPointDecoder from "@/components/visualizations/chapter2/FloatingPointDecoder";
 import QuizComponent from "@/components/quiz/QuizComponent";
 
 interface ChapterPageClientProps {
@@ -237,12 +240,53 @@ export default function ChapterPageClient({ chapterId }: ChapterPageClientProps)
                                     </div>
                                 </>
                             ) : (
-                                <div className="text-center py-8">
-                                    <div className="text-6xl mb-4">🚧</div>
-                                    <p className="text-gray-500">
-                                        这一章的内容正在开发中，敬请期待精彩的可视化学习体验！
-                                    </p>
-                                </div>
+                                <>
+                                    {/* 欢迎卡片 */}
+                                    <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-6 border border-purple-100">
+                                        <div className="flex items-start gap-4">
+                                            <div className="text-4xl">🔢</div>
+                                            <div>
+                                                <h3 className="text-lg font-semibold text-purple-900 mb-2">
+                                                    欢迎来到第二章：信息的表示和处理
+                                                </h3>
+                                                <p className="text-gray-600 leading-relaxed">
+                                                    这一章将带你深入计算机的底层，理解数字和字符是如何以二进制的形式存储在硬件中的。掌握这些基础，是理解程序运行逻辑和性能优化的关键。
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* 学习目标网格 */}
+                                    <div className="mt-6">
+                                        <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                                            <span className="text-xl">📚</span>
+                                            本章学习重点
+                                        </h3>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+                                                <span className="text-2xl">🌍</span>
+                                                <div>
+                                                    <div className="font-medium text-gray-900">字节序</div>
+                                                    <div className="text-sm text-gray-500">大端 (Big) vs 小端 (Little)</div>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+                                                <span className="text-2xl">➕</span>
+                                                <div>
+                                                    <div className="font-medium text-gray-900">整数运算</div>
+                                                    <div className="text-sm text-gray-500">补码表示与溢出原理</div>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+                                                <span className="text-2xl">🌊</span>
+                                                <div>
+                                                    <div className="font-medium text-gray-900">浮点数</div>
+                                                    <div className="text-sm text-gray-500">IEEE 754 标准拆解</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </>
                             )}
                         </div>
                     </section>
@@ -408,7 +452,79 @@ export default function ChapterPageClient({ chapterId }: ChapterPageClientProps)
                         </section>
                     )}
 
-                    {/* Section 8: Quiz */}
+                    {/* Chapter 2 Sections */}
+                    {chapter.id === "ch02" && (
+                        <>
+                            <section className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                                <div className="flex items-center gap-3 mb-6">
+                                    <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center">
+                                        <span className="text-xl">🌍</span>
+                                    </div>
+                                    <h2 className="text-xl font-semibold text-gray-900">2.1 字节序：Byte Ordering</h2>
+                                </div>
+                                <p className="text-gray-600 mb-6 font-medium">
+                                    同样的一个数字，在不同架构的电脑里，存储顺序可能完全相反。
+                                </p>
+                                <EndiannessExplorer
+                                    onInteract={() => { if (progress < 25) handleUpdateProgress(25); }}
+                                />
+                            </section>
+
+                            <section className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                                <div className="flex items-center gap-3 mb-6">
+                                    <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center">
+                                        <span className="text-xl">➕</span>
+                                    </div>
+                                    <h2 className="text-xl font-semibold text-gray-900">2.2 整数运算与溢出</h2>
+                                </div>
+                                <p className="text-gray-600 mb-6 font-medium">
+                                    在有限的二进制位宽下，加法不再是无穷无尽的。当数值超过范围，就会发生奇妙的“溢出”。
+                                </p>
+                                <IntegerArithmetic
+                                    onInteract={() => { if (progress < 50) handleUpdateProgress(50); }}
+                                />
+                            </section>
+
+                            <section className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                                <div className="flex items-center gap-3 mb-6">
+                                    <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center">
+                                        <span className="text-xl">🌊</span>
+                                    </div>
+                                    <h2 className="text-xl font-semibold text-gray-900">2.4 浮点数：IEEE 754 标准</h2>
+                                </div>
+                                <p className="text-gray-600 mb-6 font-medium">
+                                    计算机如何表示 `0.1` 这种带小数的数字？它被拆解成了科学计数法的二进制版本。
+                                </p>
+                                <FloatingPointDecoder
+                                    onInteract={() => { if (progress < 75) handleUpdateProgress(75); }}
+                                />
+                            </section>
+
+                            <section className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                                <div className="flex items-center gap-3 mb-6">
+                                    <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center">
+                                        <span className="text-xl">📝</span>
+                                    </div>
+                                    <h2 className="text-xl font-semibold text-gray-900">
+                                        第 2 章 408 真题练习
+                                    </h2>
+                                </div>
+                                <p className="text-gray-600 mb-6">
+                                    挑战关于补码运算、浮点数标准和字节序的真实考题。
+                                </p>
+                                <QuizComponent
+                                    chapterId="ch02"
+                                    onComplete={(score, total) => {
+                                        if (progress < 100 && score === total) {
+                                            handleUpdateProgress(100);
+                                        }
+                                    }}
+                                />
+                            </section>
+                        </>
+                    )}
+
+                    {/* Section 8: Quiz (Chapter 1 fallback) */}
                     {chapter.id === "ch01" && (
                         <section className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
                             <div className="flex items-center gap-3 mb-6">
@@ -502,6 +618,6 @@ export default function ChapterPageClient({ chapterId }: ChapterPageClientProps)
                     )}
                 </motion.div>
             </main>
-        </div>
+        </div >
     );
 }

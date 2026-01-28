@@ -3,16 +3,16 @@
 ## Phase 1: 第1章可视化组件 ✅ 已完成
 - [x] 所有6个可视化组件已完成并集成
 
-## Phase 2: 408测验系统 ✅ 已完成
-- [x] 知识点体系设计
-- [x] 题目数据结构（含知识点映射）
-- [x] QuizComponent 测验组件
-- [x] 知识点筛选功能
-- [x] 收集408真题（25道第1章相关）
-- [ ] MySQL数据库集成（待定）
+## Phase 3: 部署与访问优化 ✅
+- [x] 静态导出配置 (output: export)
+- [x] Cloudflare Pages 基础部署 (已完成)
+- [x] 绑定自定义域名 `csapp-visual.eu.cc` (已在 Vercel/Cloudflare 握手中)
 
-## Phase 3: 后续章节可视化
-- [ ] 第2章：整数/浮点数可视化器
+## Phase 4: 内网穿透 (Cloudflare Tunnel) [/]
+- [ ] 安装 `cloudflared` 工具
+- [ ] 执行隧道登录与授权
+- [ ] 创建隧道并映射本地 `localhost:3000`
+- [ ] 配置自定义域名访问
 
 ## Phase 4: 交互功能
 - [ ] 留言/评论系统
