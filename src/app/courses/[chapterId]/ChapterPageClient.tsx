@@ -167,7 +167,7 @@ export default function ChapterPageClient({ chapterId }: ChapterPageClientProps)
                         </div>
 
                         <div className="space-y-6">
-                            {chapter.id === "ch01" ? (
+                            {chapter.id === "ch01" && (
                                 <>
                                     {/* 欢迎卡片 */}
                                     <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-100">
@@ -239,7 +239,9 @@ export default function ChapterPageClient({ chapterId }: ChapterPageClientProps)
                                         </div>
                                     </div>
                                 </>
-                            ) : (
+                            )}
+
+                            {chapter.id === "ch02" && (
                                 <>
                                     {/* 欢迎卡片 */}
                                     <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-6 border border-purple-100">
@@ -287,6 +289,16 @@ export default function ChapterPageClient({ chapterId }: ChapterPageClientProps)
                                         </div>
                                     </div>
                                 </>
+                            )}
+
+                            {chapter.id !== "ch01" && chapter.id !== "ch02" && (
+                                <div className="text-center py-8">
+                                    <div className="text-6xl mb-4">🚧</div>
+                                    <h3 className="text-xl font-bold text-gray-900 mb-2">内容施工中</h3>
+                                    <p className="text-gray-500">
+                                        这一章的可视化内容正在快马加鞭开发中，敬请期待！
+                                    </p>
+                                </div>
                             )}
                         </div>
                     </section>
