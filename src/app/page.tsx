@@ -89,41 +89,32 @@ export default function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <motion.div
             className="text-center"
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
             {/* Badge */}
-            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 text-sm font-medium mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 text-sm font-medium mb-8">
               <Sparkles size={16} />
               <span>为零基础学习者打造</span>
-            </motion.div>
+            </div>
 
             {/* Main Title */}
-            <motion.h1
-              variants={itemVariants}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight"
-            >
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
               深入理解
               <br />
               <span className="gradient-text">计算机系统</span>
-            </motion.h1>
+            </h1>
 
             {/* Subtitle */}
-            <motion.p
-              variants={itemVariants}
-              className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-10"
-            >
+            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-10">
               通过交互式可视化和动手实验，让 CSAPP 的每一个概念都变得生动有趣。
               <br className="hidden sm:block" />
               不只是学习，而是真正理解计算机的工作原理。
-            </motion.p>
+            </p>
 
             {/* CTA Buttons */}
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4"
-            >
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/courses"
                 className="group inline-flex items-center gap-2 px-8 py-4 rounded-full gradient-bg text-white font-semibold text-lg shadow-xl shadow-indigo-500/30 hover:shadow-2xl hover:shadow-indigo-500/40 transition-all duration-300 transform hover:scale-105"
@@ -138,13 +129,10 @@ export default function HomePage() {
                 <Play size={20} />
                 观看演示
               </button>
-            </motion.div>
+            </div>
 
             {/* Stats */}
-            <motion.div
-              variants={itemVariants}
-              className="mt-16 grid grid-cols-3 gap-8 max-w-lg mx-auto"
-            >
+            <div className="mt-16 grid grid-cols-3 gap-8 max-w-lg mx-auto">
               <div className="text-center">
                 <div className="text-3xl font-bold text-gray-900">12</div>
                 <div className="text-sm text-gray-500">完整章节</div>
@@ -157,7 +145,7 @@ export default function HomePage() {
                 <div className="text-3xl font-bold text-gray-900">∞</div>
                 <div className="text-sm text-gray-500">学习可能</div>
               </div>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>
